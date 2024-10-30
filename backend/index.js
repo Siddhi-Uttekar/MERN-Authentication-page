@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const { MONGO_URL, PORT } = process.env;
+const cookieParser = require("cookie-parser");
+const authRoute = require("./Routes/AuthRoute");
 const app = express();  //represents express application
 
 mongoose
@@ -11,7 +13,7 @@ mongoose
     useUnifiedTopology: true,
 })
 .then(()=>console.log("mongodb connected successfully"))
-.catch(()=> console.error(err));
+.catch((err)=> console.error(err));
 
 app.listen(PORT, ()=> {
     console.log(`server is running on port ${PORT}`);
@@ -25,4 +27,8 @@ app.use(
     })
   );
 
+  app.use(cookieParser());
+
   app.use(express.json());      //middleware function which parses json correctly, req.body will allow you to access this data
+
+  app.use('/', authRoute);
