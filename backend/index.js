@@ -9,8 +9,7 @@ const app = express();  //represents express application
 
 mongoose
 .connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    
 })
 .then(()=>console.log("mongodb connected successfully"))
 .catch((err)=> console.error(err));
