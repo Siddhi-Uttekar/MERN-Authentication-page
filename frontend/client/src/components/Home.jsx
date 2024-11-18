@@ -14,7 +14,7 @@ const Home = () => {
         navigate("/login");
       }
       const { data } = await axios.post(
-        "http://localhost:4000",
+        "http://localhost:4001",
         {},
         { withCredentials: true }
       );
@@ -24,7 +24,7 @@ const Home = () => {
         ? toast(`Hello ${user}`, {
             position: "top-right",
           })
-        : (removeCookie("token"), navigate("/login"));
+        : (removeCookie("token"), navigate("/"));
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);

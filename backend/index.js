@@ -9,7 +9,7 @@ const app = express();  //represents express application
 
 mongoose
 .connect(MONGO_URL, {
-    
+
 })
 .then(()=>console.log("mongodb connected successfully"))
 .catch((err)=> console.error(err));
@@ -20,11 +20,15 @@ app.listen(PORT, ()=> {
 
 app.use(
     cors({
-      origin: ["http://localhost:4000"],          //allows req from this port only
+      origin: ["http://localhost:3000"],          //allows req from this port only
       methods: ["GET", "POST", "PUT", "DELETE"],  //allows http req
       credentials: true,                         //allows cookies and credentials to be sent with requests
     })
   );
+//   app.get('/', (req, res) => {
+//     res.send('Welcome to the home page!');
+// });
+
 
   app.use(cookieParser());
 
