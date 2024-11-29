@@ -5,6 +5,9 @@ require("dotenv").config();
 const { MONGO_URL, PORT } = process.env;
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
+
+const jobRoutes = require('./Routes/JobRoutes');
+
 const app = express();  //represents express application
 
 mongoose
@@ -25,9 +28,9 @@ app.use(
       credentials: true,                         //allows cookies and credentials to be sent with requests
     })
   );
-//   app.get('/', (req, res) => {
-//     res.send('Welcome to the home page!');
-// });
+  app.get('/', (req, res) => {
+    res.send('Welcome to the home page!');
+});
 
 
   app.use(cookieParser());
@@ -35,3 +38,6 @@ app.use(
   app.use(express.json());      //middleware function which parses json correctly, req.body will allow you to access this data
 
   app.use('/', authRoute);
+
+  // const jobRoutes = require('./Routes/JobRoutes');
+  app.use('/jobs', jobRoutes);

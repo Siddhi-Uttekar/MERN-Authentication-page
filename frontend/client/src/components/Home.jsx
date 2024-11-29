@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-
+import AddJob from "./AddJob";
+import JobList from "./JobList";
 const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
@@ -39,6 +40,8 @@ const Home = () => {
           {" "}
           Welcome <span>{username}</span>
         </h4>
+        <h4><AddJob/></h4>
+        <JobList/>
         <button onClick={Logout}>LOGOUT</button>
       </div>
       <ToastContainer />

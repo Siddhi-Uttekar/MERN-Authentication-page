@@ -23,6 +23,17 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: new Date(),
       },
+
+      jobs: [
+        {
+            title: { type: String, required: true },
+            company: { type: String, required: true },
+            location: { type: String, default: 'Remote' },
+            salary: { type: Number, default: 0 },
+            status: { type: String, default: 'Bookmarked' }, // e.g., Bookmarked, Applied, Interviewing
+            dateAdded: { type: Date, default: Date.now },
+        },
+    ],
 })
 
 //prev - middleware func comes from mongoose
